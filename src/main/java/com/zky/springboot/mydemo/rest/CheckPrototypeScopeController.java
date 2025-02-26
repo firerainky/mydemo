@@ -21,7 +21,7 @@ public class CheckPrototypeScopeController {
     }
 
     @GetMapping("/")
-    public String getMethodName() {
+    public String check() {
         return "Comparing beans: firstCoach == secondCoach, " + (firstCoach == secondCoach);
     }
 
