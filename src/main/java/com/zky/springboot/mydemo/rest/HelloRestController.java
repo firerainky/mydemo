@@ -1,5 +1,6 @@
 package com.zky.springboot.mydemo.rest;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +13,7 @@ public class HelloRestController {
 
     private Coach coach;
     
-    public HelloRestController(Coach coach) {
+    public HelloRestController(@Qualifier("boxingCoach") Coach coach) {
         this.coach = coach;
     }
 
