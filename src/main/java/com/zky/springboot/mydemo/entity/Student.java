@@ -29,6 +29,10 @@ public class Student {
         return id;
     }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public Student() { }
 
     public Student(String firstName, String lastName, String email) {

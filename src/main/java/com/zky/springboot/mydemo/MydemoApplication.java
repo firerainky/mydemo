@@ -1,5 +1,7 @@
 package com.zky.springboot.mydemo;
 
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,7 +22,10 @@ public class MydemoApplication {
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
 			// createStudent(studentDAO);
-			readStudent(studentDAO);
+			// readStudent(studentDAO);
+			// queryForStudents(studentDAO);
+			// updateStudent(studentDAO);
+			deleteStudent(studentDAO);
 		};
 	}
 
@@ -39,5 +44,22 @@ public class MydemoApplication {
 
 		Student student = studentDAO.findById(tempStudent.getId());
 		System.out.println("Found the student: " + student);
+	}
+
+	private void queryForStudents(StudentDAO studentDAO) {
+		List<Student> students = studentDAO.findAll();
+		for (Student student : students) {
+			System.out.println(student);
+		}
+	}
+
+	private void updateStudent(StudentDAO studentDAO) {
+		Student student = studentDAO.findById(1);
+		student.setLastName("Smiht");
+		studentDAO.update(student);
+	}
+
+	private void deleteStudent(StudentDAO studentDAO) {
+		studentDAO.delete(3);
 	}
 }
