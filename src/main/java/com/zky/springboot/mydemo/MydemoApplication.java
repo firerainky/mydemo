@@ -25,7 +25,7 @@ public class MydemoApplication {
 			// readStudent(studentDAO);
 			// queryForStudents(studentDAO);
 			// updateStudent(studentDAO);
-			deleteStudent(studentDAO);
+			// deleteStudent(studentDAO);
 		};
 	}
 
