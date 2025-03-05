@@ -1,6 +1,7 @@
 package com.zky.springboot.mydemo.employee;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -8,31 +9,34 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private EmployeeDAO employeeDAO;
+    private EmployeeRepository employeeRepository;
 
-    public EmployeeServiceImpl(EmployeeDAO employeeDAO) {
-        this.employeeDAO = employeeDAO;
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
     }
 
-	@Override
-	public List<Employee> findAll() {
-		return employeeDAO.findAll();
-	}
+    @Override
+    public List<Employee> findAll() {
+        return employeeRepository.findAll();
+    }
 
-	@Override
-	public Employee findById(int id) {
-		return employeeDAO.findById(id);
-	}
+    @Override
+    public Employee findById(int id) {
+        Optional<Employee> result = employeeRepository.findById(id);
+        return result.orElseThrow(() -> {
+            throw new RuntimeException("Employee id not found - " + id);
+        });
+    }
 
-	@Override
+    @Override
     @Transactional
-	public Employee save(Employee employee) {
-		return employeeDAO.save(employee);
-	}
+    public Employee save(Employee employee) {
+        return employeeRepository.save(employee);
+    }
 
-	@Override
+    @Override
     @Transactional
-	public void deleteById(int id) {
-		employeeDAO.deleteById(id);
-	}
+    public void deleteById(int id) {
+        employeeRepository.deleteById(id);
+    }
 }
