@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
 import com.zky.springboot.mydemo.dao.StudentDAO;
 import com.zky.springboot.mydemo.entity.Student;
 
-@SpringBootApplication(exclude=SecurityAutoConfiguration.class)
+// @SpringBootApplication(exclude=SecurityAutoConfiguration.class)
+@SpringBootApplication
 public class MydemoApplication {
 
 	public static void main(String[] args) {
