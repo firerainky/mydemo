@@ -19,7 +19,7 @@ public class HelloRestController {
     @Value("${pos3.hero}")
     private String pos3Hero;
 
-    @GetMapping("/")
+    @GetMapping("/salute")
     public String salute() {
         return pos3Hero;
     }
